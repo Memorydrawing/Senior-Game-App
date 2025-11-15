@@ -40,14 +40,26 @@ main {
 }
 
 .game-nav {
+  margin-top: 1rem;
+}
+
+.game-nav__list {
   display: flex;
   gap: 1rem;
   justify-content: center;
   flex-wrap: wrap;
-  margin-top: 1rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.game-nav__item {
+  flex: 1 1 180px;
+  max-width: 220px;
 }
 
 .nav-button {
+  width: 100%;
   font-size: 1.1rem;
   padding: 0.75rem 1.5rem;
   border-radius: 999px;
@@ -56,12 +68,18 @@ main {
   color: white;
   cursor: pointer;
   transition: transform 0.2s ease, background 0.2s ease;
+  touch-action: manipulation;
 }
 
 .nav-button:hover,
 .nav-button:focus {
   background: #e08d1b;
   transform: translateY(-2px);
+}
+
+.nav-button.active {
+  background: var(--primary);
+  box-shadow: 0 0 0 3px rgba(75, 139, 255, 0.2);
 }
 
 .game-section {
@@ -94,6 +112,7 @@ main {
   border-radius: 12px;
   border: none;
   cursor: pointer;
+  touch-action: manipulation;
 }
 
 .primary {
@@ -264,13 +283,142 @@ footer p {
   font-size: 0.95rem;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 900px) {
   :root {
-    font-size: 16px;
+    font-size: 17px;
+  }
+
+  header,
+  footer {
+    padding: 1.25rem;
+  }
+
+  main {
+    padding: 1rem;
+  }
+
+  h1 {
+    font-size: 2.1rem;
+  }
+
+  .instructions {
+    font-size: 1rem;
+  }
+
+  .game-section {
+    margin-top: 1.5rem;
+    padding: 1.25rem;
+  }
+
+  .game-nav__item {
+    flex-basis: 220px;
+    max-width: none;
+  }
+
+  .mahjong-board {
+    grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+    gap: 0.85rem;
+  }
+
+  .tile {
+    font-size: 1.9rem;
+    padding: 0.9rem;
+  }
+
+  .solitaire-controls {
+    justify-content: center;
+  }
+
+  .solitaire-layout {
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
   }
 
   .card {
-    width: 80px;
-    height: 120px;
+    margin: 0 auto;
+  }
+
+  #tetris-canvas {
+    width: 100%;
+    max-width: 320px;
+    height: auto;
+  }
+
+  .tetris-info {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .tetris-controls {
+    gap: 0.75rem;
+  }
+}
+
+@media (max-width: 600px) {
+  :root {
+    font-size: 15px;
+  }
+
+  header p {
+    font-size: 1rem;
+  }
+
+  h1 {
+    font-size: 1.9rem;
+  }
+
+  .game-nav__item {
+    flex: 1 1 100%;
+  }
+
+  .nav-button {
+    padding: 0.8rem 1rem;
+  }
+
+  .mahjong-board {
+    grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+  }
+
+  .tile {
+    font-size: 1.7rem;
+    padding: 0.7rem;
+  }
+
+  .solitaire-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    width: 68px;
+    height: 96px;
+    font-size: 1.4rem;
+  }
+
+  .tetris-controls button {
+    width: 52px;
+    height: 52px;
+  }
+
+  .tetris-actions {
+    gap: 0.75rem;
+  }
+}
+
+@media (max-width: 450px) {
+  header,
+  footer {
+    padding: 1rem;
+  }
+
+  main {
+    padding: 0.75rem;
+  }
+
+  .game-section {
+    padding: 1rem;
+  }
+
+  .tetris-info {
+    font-size: 1.05rem;
   }
 }

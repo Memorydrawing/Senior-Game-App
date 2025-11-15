@@ -10,10 +10,18 @@
   <header>
     <h1>Senior Game Lounge</h1>
     <p>Select a game to begin. Each experience includes gentle pacing, clear visuals, and easy-to-follow instructions.</p>
-    <nav class="game-nav">
-      <button class="nav-button" data-target="mahjong">Mahjong Match</button>
-      <button class="nav-button" data-target="solitaire">Relaxed Solitaire</button>
-      <button class="nav-button" data-target="tetris">Calming Tetris</button>
+    <nav class="game-nav" aria-label="Select a game">
+      <ul class="game-nav__list">
+        <li class="game-nav__item">
+          <button class="nav-button" data-target="mahjong">Mahjong Match</button>
+        </li>
+        <li class="game-nav__item">
+          <button class="nav-button" data-target="solitaire">Relaxed Solitaire</button>
+        </li>
+        <li class="game-nav__item">
+          <button class="nav-button" data-target="tetris">Calming Tetris</button>
+        </li>
+      </ul>
     </nav>
   </header>
 

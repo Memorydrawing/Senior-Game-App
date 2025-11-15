@@ -2,11 +2,29 @@ const navButtons = document.querySelectorAll('.nav-button');
 const sections = document.querySelectorAll('.game-section');
 
 navButtons.forEach((button) => {
+  const target = button.dataset.target;
+  button.setAttribute('aria-controls', target);
+  const targetSection = document.getElementById(target);
+  const isInitiallyActive = targetSection?.classList.contains('active');
+  button.classList.toggle('active', Boolean(isInitiallyActive));
+  button.setAttribute('aria-pressed', isInitiallyActive ? 'true' : 'false');
+
   button.addEventListener('click', () => {
-    const target = button.dataset.target;
     sections.forEach((section) => {
-      section.classList.toggle('active', section.id === target);
+      const isActive = section.id === target;
+      section.classList.toggle('active', isActive);
     });
+
+    navButtons.forEach((navButton) => {
+      const isActive = navButton === button;
+      navButton.classList.toggle('active', isActive);
+      navButton.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+    });
+
+    const nextSection = document.getElementById(target);
+    if (nextSection && window.matchMedia('(max-width: 900px)').matches) {
+      nextSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
   });
 });
 

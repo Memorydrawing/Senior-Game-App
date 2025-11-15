@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Senior Game App</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <h1>Senior Game Lounge</h1>
+    <p>Select a game to begin. Each experience includes gentle pacing, clear visuals, and easy-to-follow instructions.</p>
+    <nav class="game-nav">
+      <button class="nav-button" data-target="mahjong">Mahjong Match</button>
+      <button class="nav-button" data-target="solitaire">Relaxed Solitaire</button>
+      <button class="nav-button" data-target="tetris">Calming Tetris</button>
+    </nav>
+  </header>
+
+  <main>
+    <section id="mahjong" class="game-section active">
+      <h2>Mahjong Match</h2>
+      <p class="instructions">
+        Find matching pairs of tiles. Click two tiles with the same symbol to remove them from the board. Clear all tiles to win!
+      </p>
+      <div id="mahjong-board" class="mahjong-board" aria-live="polite"></div>
+      <div class="status" id="mahjong-status"></div>
+      <button id="mahjong-reset" class="primary">Play Again</button>
+    </section>
+
+    <section id="solitaire" class="game-section">
+      <h2>Relaxed Solitaire</h2>
+      <p class="instructions">
+        Draw a card, then place it on the matching foundation (♠, ♥, ♦, ♣) in ascending order starting with Ace. You may recycle the waste pile whenever the stock is empty.
+      </p>
+      <div class="solitaire-controls">
+        <button id="draw-card" class="primary">Draw Card</button>
+        <button id="reset-stock" class="secondary">Recycle Waste</button>
+      </div>
+      <div class="solitaire-layout">
+        <div class="stock-area">
+          <h3>Stock</h3>
+          <div id="stock-count" aria-live="polite"></div>
+        </div>
+        <div class="waste-area">
+          <h3>Waste</h3>
+          <div id="waste-card" class="card" aria-live="polite"></div>
+        </div>
+        <div class="foundations">
+          <h3>Foundations</h3>
+          <div class="foundation-row">
+            <button class="foundation" data-suit="♠">♠</button>
+            <button class="foundation" data-suit="♥">♥</button>
+            <button class="foundation" data-suit="♦">♦</button>
+            <button class="foundation" data-suit="♣">♣</button>
+          </div>
+        </div>
+      </div>
+      <div class="status" id="solitaire-status" aria-live="polite"></div>
+      <button id="solitaire-reset" class="primary">New Game</button>
+    </section>
+
+    <section id="tetris" class="game-section">
+      <h2>Calming Tetris</h2>
+      <p class="instructions">
+        Use the arrow keys or on-screen controls to guide the blocks. Clear full rows to earn points. Take your time—this version starts slowly and speeds up gently.
+      </p>
+      <canvas id="tetris-canvas" width="300" height="600" role="img" aria-label="Tetris play field"></canvas>
+      <div class="tetris-info">
+        <div>Score: <span id="tetris-score">0</span></div>
+        <div>Lines: <span id="tetris-lines">0</span></div>
+      </div>
+      <div class="tetris-controls">
+        <button data-action="left">⟸</button>
+        <button data-action="rotate">⟳</button>
+        <button data-action="right">⟹</button>
+        <button data-action="down">⬇</button>
+      </div>
+      <div class="status" id="tetris-status" aria-live="polite"></div>
+      <div class="tetris-actions">
+        <button id="tetris-start" class="primary">Start</button>
+        <button id="tetris-pause" class="secondary">Pause</button>
+        <button id="tetris-reset" class="secondary">Reset</button>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Created with seniors in mind: bright colors, large buttons, and calm pacing.</p>
+  </footer>
+
+  <script src="app.js" type="module"></script>
+</body>
+</html>
